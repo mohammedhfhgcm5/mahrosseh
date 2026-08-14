@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Coffee,
   IceCream2,
@@ -6,7 +8,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { ProductCard } from "@/components/site/ProductCard";
-import type { CategoryWithProducts } from "@/lib/types";
+import type { CategoryWithProducts, SerializedProduct } from "@/lib/types";
 
 const icons: Record<string, LucideIcon> = {
   snowflake: Snowflake,
@@ -18,9 +20,18 @@ const icons: Record<string, LucideIcon> = {
 type CategorySectionProps = {
   category: CategoryWithProducts;
   currency: string;
+  getQuantity?: (productId: string) => number;
+  onIncrement?: (product: SerializedProduct) => void;
+  onDecrement?: (productId: string) => void;
 };
 
-export function CategorySection({ category, currency }: CategorySectionProps) {
+export function CategorySection({
+  category,
+  currency,
+  getQuantity,
+  onIncrement,
+  onDecrement,
+}: CategorySectionProps) {
   const Icon = icons[category.icon] ?? IceCream2;
 
   return (
@@ -38,7 +49,14 @@ export function CategorySection({ category, currency }: CategorySectionProps) {
       ) : (
         <div className="grid grid-cols-1 gap-3 min-[380px]:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
           {category.products.map((product) => (
-            <ProductCard key={product.id} product={product} currency={currency} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              currency={currency}
+              quantity={getQuantity?.(product.id) ?? 0}
+              onIncrement={onIncrement ? () => onIncrement(product) : undefined}
+              onDecrement={onDecrement ? () => onDecrement(product.id) : undefined}
+            />
           ))}
         </div>
       )}

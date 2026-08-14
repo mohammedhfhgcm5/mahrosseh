@@ -2,6 +2,7 @@ import { AdminHeader } from "@/components/admin/AdminHeader";
 import { LocationsManager } from "@/components/admin/LocationsManager";
 import { SettingsForm } from "@/components/admin/SettingsForm";
 import { getLocations, getSettings } from "@/lib/queries";
+import { getSiteUrl } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
@@ -20,7 +21,7 @@ export default async function AdminSettingsPage() {
         subtitle="إدارة معلومات المتجر وساعات العمل وتفضيلات النظام"
       />
       <SettingsForm initial={settings} />
-      <LocationsManager initial={locations} />
+      <LocationsManager initial={locations} siteUrl={getSiteUrl()} />
     </>
   );
 }

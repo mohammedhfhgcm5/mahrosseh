@@ -71,5 +71,6 @@ model Settings {
   instagramUrl   String  @default("")
   facebookUrl    String  @default("")
   whatsappNumbers Json   @default("[]")
+  orderoPhone    String  @default("")
   updatedAt   DateTime @updatedAt
 }

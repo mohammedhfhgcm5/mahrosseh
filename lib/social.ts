@@ -7,12 +7,18 @@ export type WhatsAppContact = {
 export function digitsOnly(phone: string) {
   let digits = phone.replace(/\D/g, "");
   if (digits.startsWith("00")) digits = digits.slice(2);
+  if (digits.startsWith("09") && digits.length === 10) {
+    digits = `963${digits.slice(1)}`;
+  }
   return digits;
 }
 
-export function whatsappLink(phone: string) {
+export function whatsappLink(phone: string, text?: string) {
   const digits = digitsOnly(phone);
-  return digits ? `https://wa.me/${digits}` : "";
+  if (!digits) return "";
+  const base = `https://wa.me/${digits}`;
+  if (!text) return base;
+  return `${base}?text=${encodeURIComponent(text)}`;
 }
 
 export function parseWhatsappNumbers(value: unknown): WhatsAppContact[] {

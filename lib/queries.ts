@@ -78,6 +78,37 @@ export async function getLocations() {
   }
 }
 
+export async function getLocationById(id: string) {
+  try {
+    return await prisma.location.findUnique({ where: { id } });
+  } catch {
+    return null;
+  }
+}
+
+export async function getFullMenu(): Promise<CategoryWithProducts[]> {
+  try {
+    const categories = await prisma.category.findMany({
+      orderBy: [{ page: "asc" }, { sortOrder: "asc" }],
+      include: {
+        products: {
+          where: { isAvailable: true },
+          orderBy: { sortOrder: "asc" },
+        },
+      },
+    });
+
+    return categories
+      .filter((category) => category.products.length > 0)
+      .map((category) => ({
+        ...category,
+        products: category.products.map(serializeProduct),
+      }));
+  } catch {
+    return [];
+  }
+}
+
 export async function getDashboardStats() {
   try {
     const [products, categories, locations, settings] = await Promise.all([

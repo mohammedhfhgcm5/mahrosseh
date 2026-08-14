@@ -49,6 +49,7 @@ export const DEFAULT_SETTINGS = {
   instagramUrl: "",
   facebookUrl: "",
   whatsappNumbers: [] as { id: string; phone: string; label: string }[],
+  orderoPhone: "",
 };
 
 export const SITE_NAME_AR = "فراجولا جيلاتو";

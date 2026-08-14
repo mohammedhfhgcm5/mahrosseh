@@ -58,6 +58,7 @@ export async function PUT(request: Request) {
       instagramUrl: normalizeHttpUrl(String(body?.instagramUrl ?? "")),
       facebookUrl: normalizeHttpUrl(String(body?.facebookUrl ?? "")),
       whatsappNumbers: whatsappNumbers as Prisma.InputJsonValue,
+      orderoPhone: String(body?.orderoPhone ?? "").trim(),
     };
 
     const settings = await prisma.settings.upsert({

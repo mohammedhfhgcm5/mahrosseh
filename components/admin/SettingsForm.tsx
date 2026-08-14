@@ -8,6 +8,7 @@ import { whatsappLink } from "@/lib/social";
 export function SettingsForm({ initial }: { initial: SerializedSettings }) {
   const [form, setForm] = useState({
     ...initial,
+    orderoPhone: initial.orderoPhone ?? "",
     whatsappNumbers: initial.whatsappNumbers ?? [],
   });
   const [message, setMessage] = useState("");
@@ -84,6 +85,19 @@ export function SettingsForm({ initial }: { initial: SerializedSettings }) {
               rows={4}
               className="mt-2 w-full rounded-xl border border-pink-100 px-3 py-2"
             />
+          </label>
+          <label className="md:col-span-2 text-sm font-semibold">
+            رقم واتساب اوردرو (افتراضي)
+            <input
+              value={form.orderoPhone}
+              onChange={(event) => setForm({ ...form, orderoPhone: event.target.value })}
+              placeholder="9639xxxxxxxx"
+              dir="ltr"
+              className="mt-2 w-full rounded-xl border border-pink-100 px-3 py-2"
+            />
+            <span className="mt-1 block text-xs font-normal text-zinc-500">
+              يُستخدم إذا الفرع ما عنده رقم. الطلبات من QR تروح على رقم الفرع أولاً.
+            </span>
           </label>
           <label className="md:col-span-2 text-sm font-semibold">
             عنوان الهيرو
