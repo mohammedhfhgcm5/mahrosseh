@@ -48,13 +48,19 @@ async function main() {
       address: "الرياض، حي العليا",
       description: "متجر جيلاتو إيطالي فاخر يقدم نكهات طازجة يومياً.",
       isOpen: true,
-      currency: "ر.س",
+      currency: "ل.س",
       taxEnabled: false,
       taxRate: 0.15,
       heroTitle: "استمتع بمشروباتنا المنعشة واللذيذة",
       heroText:
         "مجموعة متنوعة من المشروبات الباردة والساخنة المحضّرة بعناية لتكتمل تجربتك مع الجيلاتو.",
       heroImage: IMG.hero,
+      showWhatsapp: true,
+      showInstagram: false,
+      showFacebook: false,
+      instagramUrl: "",
+      facebookUrl: "",
+      whatsappNumbers: [],
     },
   });
 

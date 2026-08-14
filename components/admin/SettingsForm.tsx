@@ -3,9 +3,13 @@
 import { useState } from "react";
 import { ImageUpload } from "@/components/admin/ImageUpload";
 import type { SerializedSettings } from "@/lib/types";
+import { whatsappLink } from "@/lib/social";
 
 export function SettingsForm({ initial }: { initial: SerializedSettings }) {
-  const [form, setForm] = useState(initial);
+  const [form, setForm] = useState({
+    ...initial,
+    whatsappNumbers: initial.whatsappNumbers ?? [],
+  });
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -106,6 +110,143 @@ export function SettingsForm({ initial }: { initial: SerializedSettings }) {
             />
           </div>
         </div>
+
+        <div className="mt-8 border-t border-pink-100 pt-6">
+          <h3 className="text-lg font-extrabold">روابط التواصل في الفوتر</h3>
+          <p className="mt-1 text-sm text-zinc-500">
+            فعّل الأيقونة وأضف الرابط. أرقام واتساب تُفتح مباشرة في التطبيق.
+          </p>
+
+          <div className="mt-5 space-y-4">
+            <label className="flex items-center justify-between rounded-2xl bg-page px-4 py-3 text-sm font-semibold">
+              إظهار إنستغرام
+              <input
+                type="checkbox"
+                checked={form.showInstagram}
+                onChange={(event) => setForm({ ...form, showInstagram: event.target.checked })}
+                className="accent-brand"
+              />
+            </label>
+            <label className="block text-sm font-semibold">
+              رابط إنستغرام
+              <input
+                value={form.instagramUrl}
+                onChange={(event) => setForm({ ...form, instagramUrl: event.target.value })}
+                placeholder="https://instagram.com/fragola"
+                className="mt-2 w-full rounded-xl border border-pink-100 px-3 py-2"
+                disabled={!form.showInstagram}
+              />
+            </label>
+
+            <label className="flex items-center justify-between rounded-2xl bg-page px-4 py-3 text-sm font-semibold">
+              إظهار فيسبوك
+              <input
+                type="checkbox"
+                checked={form.showFacebook}
+                onChange={(event) => setForm({ ...form, showFacebook: event.target.checked })}
+                className="accent-brand"
+              />
+            </label>
+            <label className="block text-sm font-semibold">
+              رابط فيسبوك
+              <input
+                value={form.facebookUrl}
+                onChange={(event) => setForm({ ...form, facebookUrl: event.target.value })}
+                placeholder="https://facebook.com/fragola"
+                className="mt-2 w-full rounded-xl border border-pink-100 px-3 py-2"
+                disabled={!form.showFacebook}
+              />
+            </label>
+
+            <label className="flex items-center justify-between rounded-2xl bg-page px-4 py-3 text-sm font-semibold">
+              إظهار واتساب
+              <input
+                type="checkbox"
+                checked={form.showWhatsapp}
+                onChange={(event) => setForm({ ...form, showWhatsapp: event.target.checked })}
+                className="accent-brand"
+              />
+            </label>
+
+            <div className="space-y-3">
+              {form.whatsappNumbers.map((item, index) => (
+                <div key={item.id} className="rounded-2xl border border-pink-100 p-4">
+                  <div className="mb-3 flex items-center justify-between">
+                    <p className="text-sm font-bold">واتساب {index + 1}</p>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setForm({
+                          ...form,
+                          whatsappNumbers: form.whatsappNumbers.filter((row) => row.id !== item.id),
+                        })
+                      }
+                      className="text-sm text-red-500"
+                    >
+                      حذف
+                    </button>
+                  </div>
+                  <label className="block text-sm font-semibold">
+                    الاسم (اختياري)
+                    <input
+                      value={item.label}
+                      onChange={(event) => {
+                        const whatsappNumbers = form.whatsappNumbers.map((row) =>
+                          row.id === item.id ? { ...row, label: event.target.value } : row,
+                        );
+                        setForm({ ...form, whatsappNumbers });
+                      }}
+                      placeholder="الفرع الرئيسي"
+                      className="mt-2 w-full rounded-xl border border-pink-100 px-3 py-2"
+                    />
+                  </label>
+                  <label className="mt-3 block text-sm font-semibold">
+                    رقم واتساب مع رمز الدولة
+                    <input
+                      value={item.phone}
+                      onChange={(event) => {
+                        const whatsappNumbers = form.whatsappNumbers.map((row) =>
+                          row.id === item.id ? { ...row, phone: event.target.value } : row,
+                        );
+                        setForm({ ...form, whatsappNumbers });
+                      }}
+                      placeholder="9639xxxxxxxx"
+                      className="mt-2 w-full rounded-xl border border-pink-100 px-3 py-2"
+                      dir="ltr"
+                    />
+                  </label>
+                  {whatsappLink(item.phone) ? (
+                    <p className="mt-2 text-xs text-zinc-500" dir="ltr">
+                      {whatsappLink(item.phone)}
+                    </p>
+                  ) : (
+                    <p className="mt-2 text-xs text-zinc-400">سيُولَّد رابط واتساب تلقائياً بعد إدخال الرقم</p>
+                  )}
+                </div>
+              ))}
+              {form.whatsappNumbers.length < 3 ? (
+                <button
+                  type="button"
+                  onClick={() =>
+                    setForm({
+                      ...form,
+                      showWhatsapp: true,
+                      whatsappNumbers: [
+                        ...form.whatsappNumbers,
+                        { id: crypto.randomUUID(), phone: "", label: "" },
+                      ],
+                    })
+                  }
+                  className="rounded-full border-2 border-brand px-4 py-2 text-sm font-bold text-brand"
+                >
+                  إضافة رقم واتساب
+                </button>
+              ) : (
+                <p className="text-xs text-zinc-400">الحد الأقصى 3 أرقام واتساب</p>
+              )}
+            </div>
+          </div>
+        </div>
         {message ? <p className="mt-4 text-sm font-semibold text-brand">{message}</p> : null}
         <button
           type="submit"
@@ -144,6 +285,7 @@ export function SettingsForm({ initial }: { initial: SerializedSettings }) {
               onChange={(event) => setForm({ ...form, currency: event.target.value })}
               className="mt-2 w-full rounded-xl border border-pink-100 px-3 py-2"
             >
+              <option value="ل.س">ليرة سورية (ل.س)</option>
               <option value="ر.س">ريال سعودي (ر.س)</option>
               <option value="د.إ">درهم إماراتي (د.إ)</option>
             </select>

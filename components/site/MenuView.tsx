@@ -29,7 +29,7 @@ export function MenuView({
         description={description}
         imageUrl={heroImage || DEFAULT_SETTINGS.heroImage}
       />
-      <div id="menu" className="mx-auto max-w-7xl px-4 pb-16">
+      <div id="menu" className="mx-auto w-full max-w-7xl px-3 pb-16 sm:px-4">
         {hasItems ? (
           categories.map((category) => (
             <CategorySection

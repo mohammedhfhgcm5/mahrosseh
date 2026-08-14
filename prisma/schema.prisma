@@ -59,11 +59,17 @@ model Settings {
   address     String
   description String
   isOpen      Boolean  @default(true)
-  currency    String   @default("ر.س")
+  currency    String   @default("ل.س")
   taxEnabled  Boolean  @default(false)
   taxRate     Decimal  @default(0.15) @db.Decimal(5, 4)
   heroTitle   String   @default("")
   heroText    String   @default("")
   heroImage   String   @default("")
+  showWhatsapp   Boolean @default(true)
+  showInstagram  Boolean @default(false)
+  showFacebook   Boolean @default(false)
+  instagramUrl   String  @default("")
+  facebookUrl    String  @default("")
+  whatsappNumbers Json   @default("[]")
   updatedAt   DateTime @updatedAt
 }

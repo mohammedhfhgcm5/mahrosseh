@@ -36,13 +36,19 @@ export const DEFAULT_SETTINGS = {
   address: "الرياض، المملكة العربية السعودية",
   description: "متجر جيلاتو إيطالي فاخر يقدم نكهات طازجة يومياً.",
   isOpen: true,
-  currency: "ر.س",
+  currency: "ل.س",
   taxEnabled: false,
   taxRate: 0.15,
   heroTitle: "",
   heroText: "",
   heroImage:
     "https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=1200&q=80",
+  showWhatsapp: true,
+  showInstagram: false,
+  showFacebook: false,
+  instagramUrl: "",
+  facebookUrl: "",
+  whatsappNumbers: [] as { id: string; phone: string; label: string }[],
 };
 
 export const SITE_NAME_AR = "فراجولا جيلاتو";

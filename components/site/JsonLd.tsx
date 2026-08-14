@@ -6,6 +6,12 @@ type JsonLdProps = {
   categories: CategoryWithProducts[];
 };
 
+function priceCurrency(currency: string) {
+  if (currency === "ر.س") return "SAR";
+  if (currency === "د.إ") return "AED";
+  return "SYP";
+}
+
 export function JsonLd({ settings, categories }: JsonLdProps) {
   const siteUrl = getSiteUrl();
   const menuItems = categories.flatMap((category) =>
@@ -17,7 +23,7 @@ export function JsonLd({ settings, categories }: JsonLdProps) {
       offers: {
         "@type": "Offer",
         price: product.price,
-        priceCurrency: settings.currency === "ر.س" ? "SAR" : "AED",
+        priceCurrency: priceCurrency(settings.currency),
       },
     })),
   );
@@ -48,7 +54,7 @@ export function JsonLd({ settings, categories }: JsonLdProps) {
           offers: {
             "@type": "Offer",
             price: product.price,
-            priceCurrency: settings.currency === "ر.س" ? "SAR" : "AED",
+            priceCurrency: priceCurrency(settings.currency),
           },
         })),
       })),

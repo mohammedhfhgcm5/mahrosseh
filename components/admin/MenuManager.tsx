@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { Pencil, Trash2, X } from "lucide-react";
 import { ImageUpload } from "@/components/admin/ImageUpload";
+import { readApiJson } from "@/lib/client";
 import type { Category } from "@prisma/client";
 import type { ProductWithCategory } from "@/lib/types";
 
@@ -65,8 +66,8 @@ export function MenuManager({
       fetch("/api/categories").then((res) => res.json()),
       fetch("/api/products").then((res) => res.json()),
     ]);
-    setCategories(cats);
-    setProducts(items);
+    if (Array.isArray(cats)) setCategories(cats);
+    if (Array.isArray(items)) setProducts(items);
   }
 
   const grouped = useMemo(() => {
@@ -90,7 +91,7 @@ export function MenuManager({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
-    const data = await response.json();
+    const data = await readApiJson(response);
     if (!response.ok) {
       setMessage(data.error || "تعذر حفظ الصنف");
       return;
@@ -114,7 +115,7 @@ export function MenuManager({
         sortOrder: Number(categoryForm.sortOrder),
       }),
     });
-    const data = await response.json();
+    const data = await readApiJson(response);
     if (!response.ok) {
       setMessage(data.error || "تعذر حفظ التصنيف");
       return;

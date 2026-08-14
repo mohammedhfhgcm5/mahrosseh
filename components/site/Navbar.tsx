@@ -19,18 +19,18 @@ export function Navbar({ isOpen }: { isOpen: boolean }) {
   return (
     <header className="sticky top-0 z-50 border-b border-pink-100 bg-white/95 backdrop-blur">
       {!isOpen ? (
-        <p className="bg-brand px-4 py-1.5 text-center text-sm text-white">
+        <p className="bg-brand px-3 py-1.5 text-center text-xs text-white sm:px-4 sm:text-sm">
           المتجر مغلق حالياً — يمكنك تصفّح المنيو والعودة لاحقاً
         </p>
       ) : null}
-      <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
-        <Link href="/" className="shrink-0">
+      <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-2.5 sm:gap-4 sm:px-4 sm:py-3">
+        <Link href="/" className="min-w-0 shrink">
           <Image
             src="/logo.png"
             alt="Fragola Gelato"
             width={150}
             height={58}
-            className="h-12 w-auto sm:h-14"
+            className="h-10 w-auto max-w-[140px] object-contain sm:h-14 sm:max-w-none"
             priority
           />
         </Link>
@@ -55,7 +55,7 @@ export function Navbar({ isOpen }: { isOpen: boolean }) {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-2">
           <span className="hidden h-10 w-10 items-center justify-center rounded-full text-zinc-600 sm:flex">
             <User className="h-5 w-5" />
           </span>

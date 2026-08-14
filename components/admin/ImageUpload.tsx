@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { Upload } from "lucide-react";
+import { readApiJson } from "@/lib/client";
 
 type ImageUploadProps = {
   value: string;
@@ -22,8 +23,8 @@ export function ImageUpload({ value, onChange, label = "صورة الصنف" }: 
       const formData = new FormData();
       formData.append("file", file);
       const response = await fetch("/api/upload", { method: "POST", body: formData });
-      const data = await response.json();
-      if (!response.ok) {
+      const data = await readApiJson<{ error?: string; url?: string }>(response);
+      if (!response.ok || !data.url) {
         setError(data.error || "فشل رفع الصورة");
         return;
       }
