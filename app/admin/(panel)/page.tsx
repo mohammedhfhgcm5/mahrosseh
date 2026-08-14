@@ -5,7 +5,7 @@ import { getDashboardStats } from "@/lib/queries";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "لوحة القيادة",
+  title: "Dashboard",
   robots: { index: false, follow: false },
 };
 

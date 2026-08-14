@@ -8,24 +8,24 @@ export const PAGE_COPY: Record<
     title: "جيلاتو إيطالي طازج بنكهات لا تُقاوم",
     description:
       "نحضّر الجيلاتو يومياً من مكونات طبيعية مختارة، بنكهات كلاسيكية وموسمية ترضي كل الأذواق.",
-    seoTitle: "جيلاتو",
+    seoTitle: "Gelato",
     seoDescription:
-      "اكتشف نكهات جيلاتو فراجولا الطازجة: فراولة، فستق، شوكولاتة، فانيليا والمزيد.",
+      "Discover Fragola gelato flavors: strawberry, pistachio, chocolate, vanilla, and more.",
   },
   BEVERAGES: {
     title: "استمتع بمشروباتنا المنعشة واللذيذة",
     description:
       "مجموعة متنوعة من المشروبات الباردة والساخنة المحضّرة بعناية لتكتمل تجربتك مع الجيلاتو.",
-    seoTitle: "المشروبات",
+    seoTitle: "Beverages",
     seoDescription:
-      "مشروبات فراجولا الباردة والساخنة: موهيتو فراولة، كابتشينو، هوت شوكليت وشاي كرك.",
+      "Fragola cold and hot drinks: strawberry mojito, cappuccino, hot chocolate, and karak tea.",
   },
   SPECIALS: {
     title: "عروضنا الخاصة لهذا الأسبوع",
     description:
       "نكهات وعروض محدودة الوقت نختارها لكم بعناية. اطلبوا المميز قبل نفاد الكمية.",
-    seoTitle: "العروض",
-    seoDescription: "عروض فراجولا جيلاتو الحالية على النكهات والمشروبات المميزة.",
+    seoTitle: "Specials",
+    seoDescription: "Current Fragola Gelato specials on featured flavors and drinks.",
   },
 };
 

@@ -6,7 +6,7 @@ import { getAdminMenuData } from "@/lib/queries";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "إدارة المنيو",
+  title: "Menu",
   robots: { index: false, follow: false },
 };
 

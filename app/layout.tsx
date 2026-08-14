@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Cairo } from "next/font/google";
 import { getSiteUrl } from "@/lib/site";
-import { SITE_NAME_AR } from "@/lib/constants";
 import "./globals.css";
 
 const cairo = Cairo({
@@ -16,29 +15,29 @@ const siteUrl = getSiteUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${SITE_NAME_AR} | Fragola Gelato`,
-    template: `%s | ${SITE_NAME_AR}`,
+    default: "Fragola Gelato",
+    template: "%s | Fragola Gelato",
   },
   description:
-    "فراجولا جيلاتو — جيلاتو إيطالي فاخر ومشروبات منعشة. تصفّح المنيو واكتشف الفروع والعروض.",
+    "Fragola Gelato — premium Italian gelato and refreshing drinks. Browse the menu, specials, and locations.",
   applicationName: "Fragola Gelato",
   keywords: [
-    "جيلاتو",
-    "فراجولا",
+    "gelato",
+    "Fragola",
     "Fragola Gelato",
-    "آيس كريم",
-    "مشروبات",
-    "منيو",
+    "ice cream",
+    "drinks",
+    "menu",
   ],
   authors: [{ name: "Fragola Gelato" }],
   openGraph: {
     type: "website",
-    locale: "ar_SA",
+    locale: "en_US",
     url: siteUrl,
-    siteName: SITE_NAME_AR,
-    title: `${SITE_NAME_AR} | Fragola Gelato`,
+    siteName: "Fragola Gelato",
+    title: "Fragola Gelato",
     description:
-      "جيلاتو إيطالي فاخر ومشروبات منعشة. تصفّح المنيو واكتشف الفروع والعروض.",
+      "Premium Italian gelato and refreshing drinks. Browse the menu, specials, and locations.",
     images: [
       {
         url: "/logo.png",
@@ -50,8 +49,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME_AR} | Fragola Gelato`,
-    description: "جيلاتو إيطالي فاخر ومشروبات منعشة.",
+    title: "Fragola Gelato",
+    description: "Premium Italian gelato and refreshing drinks.",
     images: ["/logo.png"],
   },
   icons: {

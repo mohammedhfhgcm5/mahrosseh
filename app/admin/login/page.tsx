@@ -3,7 +3,7 @@ import { getAdminSession } from "@/lib/auth";
 import { LoginForm } from "@/components/admin/LoginForm";
 
 export const metadata = {
-  title: "تسجيل الدخول",
+  title: "Login",
   robots: { index: false, follow: false },
 };
 

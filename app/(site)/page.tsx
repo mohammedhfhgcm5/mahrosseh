@@ -7,7 +7,9 @@ import { getMenuByPage, getSettings } from "@/lib/queries";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: PAGE_COPY.GELATO.seoTitle,
+  title: {
+    absolute: "Fragola Gelato",
+  },
   description: PAGE_COPY.GELATO.seoDescription,
   alternates: { canonical: "/" },
   openGraph: {

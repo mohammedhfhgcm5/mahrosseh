@@ -6,7 +6,7 @@ import { getLocations, getSettings } from "@/lib/queries";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "الإعدادات",
+  title: "Settings",
   robots: { index: false, follow: false },
 };
 

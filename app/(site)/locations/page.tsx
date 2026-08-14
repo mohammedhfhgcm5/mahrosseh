@@ -5,8 +5,8 @@ import { getLocations, getSettings } from "@/lib/queries";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "الفروع",
-  description: "اعثر على أقرب فرع لفراجولا جيلاتو وتواصل معنا.",
+  title: "Locations",
+  description: "Find your nearest Fragola Gelato branch and get in touch.",
   alternates: { canonical: "/locations" },
 };
 
