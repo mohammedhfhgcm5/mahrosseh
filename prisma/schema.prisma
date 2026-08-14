@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PageType {
+  GELATO
+  BEVERAGES
+  SPECIALS
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  name      String
+  slug      String    @unique
+  icon      String    @default("cone")
+  page      PageType
+  sortOrder Int       @default(0)
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  price       Decimal  @db.Decimal(10, 2)
+  imageUrl    String
+  isAvailable Boolean  @default(true)
+  isSpecial   Boolean  @default(false)
+  sortOrder   Int      @default(0)
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Location {
+  id        String   @id @default(cuid())
+  name      String
+  address   String
+  phone     String?
+  mapUrl    String?
+  isOpen    Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Settings {
+  id          String   @id @default("main")
+  storeName   String
+  phone       String
+  address     String
+  description String
+  isOpen      Boolean  @default(true)
+  currency    String   @default("ر.س")
+  taxEnabled  Boolean  @default(false)
+  taxRate     Decimal  @default(0.15) @db.Decimal(5, 4)
+  heroTitle   String   @default("")
+  heroText    String   @default("")
+  heroImage   String   @default("")
+  updatedAt   DateTime @updatedAt
+}
