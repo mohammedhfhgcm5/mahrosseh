@@ -3,90 +3,96 @@ import { PrismaClient, PageType } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const IMG = {
-  strawberryMojito:
-    "https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=800&q=80",
-  berryMojito:
-    "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80",
-  lemonade:
-    "https://images.unsplash.com/photo-1523677011782-c13c85906db2?auto=format&fit=crop&w=800&q=80",
-  icedLatte:
-    "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
-  espresso:
-    "https://images.unsplash.com/photo-1510591509098-f4b5d0ba0d5c?auto=format&fit=crop&w=800&q=80",
-  cappuccino:
-    "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=800&q=80",
-  hotChocolate:
-    "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=800&q=80",
-  karak:
-    "https://images.unsplash.com/photo-1571934811356-5cc061af4d29?auto=format&fit=crop&w=800&q=80",
-  strawberryGelato:
-    "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=80",
-  vanilla:
-    "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=800&q=80",
-  chocolate:
-    "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=80",
-  pistachio:
-    "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=800&q=80",
-  mango:
-    "https://images.unsplash.com/photo-1488900128323-21526024875f?auto=format&fit=crop&w=800&q=80",
-  cookies:
-    "https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=800&q=80",
-  hero: "https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=1400&q=80",
+  hero: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1400&q=80",
+  frappe: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+  icedLatte: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
+  icedAmericano: "https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?auto=format&fit=crop&w=800&q=80",
+  softDrink: "https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&fit=crop&w=800&q=80",
+  icedTea: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+  softLamin: "https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=800&q=80",
+  milkshake: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=800&q=80",
+  espressoConPanna: "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=800&q=80",
+  cortado: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80",
+  affogato: "https://images.unsplash.com/photo-1413745043345-1b8890a81a45?auto=format&fit=crop&w=800&q=80",
+  flatWhite: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
+  cappuccino: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=800&q=80",
+  latte: "https://images.unsplash.com/photo-1561882468-9110e03e0f78?auto=format&fit=crop&w=800&q=80",
+  macchiato: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80",
+  espresso: "https://images.unsplash.com/photo-1510591509098-f4b5d0ba0d5c?auto=format&fit=crop&w=800&q=80",
+  spanishEspresso: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80",
+  lungo: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80",
+  ristretto: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
+  pancakeKinder: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=800&q=80",
+  pancakeChocolate: "https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=800&q=80",
+  pancakeLotus: "https://images.unsplash.com/photo-1506089676908-3592f7389d4d?auto=format&fit=crop&w=800&q=80",
+  pancakePistachio: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80",
+  crepeChocolate: "https://images.unsplash.com/photo-1519676867392-c54d0b4c0d1c?auto=format&fit=crop&w=800&q=80",
+  crepeKinder: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80",
+  crepeLotus: "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80",
+  crepePistachio: "https://images.unsplash.com/photo-1621303837174-89787a7d2398?auto=format&fit=crop&w=800&q=80",
+  crepeDubai: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=800&q=80",
+  crepeKitkat: "https://images.unsplash.com/photo-1606312619070-d48b4e809a91?auto=format&fit=crop&w=800&q=80",
+  crepeSushi: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80",
+  crepeFettuccine: "https://images.unsplash.com/photo-1470114756179-9f0d56c0c5a0?auto=format&fit=crop&w=800&q=80",
+  happinessBox: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=800&q=80",
 };
 
 async function main() {
   await prisma.product.deleteMany();
   await prisma.category.deleteMany();
-  await prisma.location.deleteMany();
-  await prisma.settings.deleteMany();
 
-  await prisma.settings.create({
-    data: {
-      id: "main",
-      storeName: "Fragola Gelato",
-      phone: "+966 50 000 0000",
-      address: "الرياض، حي العليا",
-      description: "متجر جيلاتو إيطالي فاخر يقدم نكهات طازجة يومياً.",
-      isOpen: true,
-      currency: "ل.س",
-      taxEnabled: false,
-      taxRate: 0.15,
-      heroTitle: "استمتع بمشروباتنا المنعشة واللذيذة",
-      heroText:
-        "مجموعة متنوعة من المشروبات الباردة والساخنة المحضّرة بعناية لتكتمل تجربتك مع الجيلاتو.",
-      heroImage: IMG.hero,
-      showWhatsapp: true,
-      showInstagram: false,
-      showFacebook: false,
-      instagramUrl: "",
-      facebookUrl: "",
-      whatsappNumbers: [],
-    },
-  });
+  const existingSettings = await prisma.settings.findUnique({ where: { id: "main" } });
+  if (!existingSettings) {
+    await prisma.settings.create({
+      data: {
+        id: "main",
+        storeName: "Fragola Gelato",
+        phone: "",
+        address: "",
+        description: "متجر جيلاتو إيطالي فاخر يقدم نكهات طازجة يومياً.",
+        isOpen: true,
+        currency: "ل.س",
+        heroTitle: "استمتع بمشروباتنا المنعشة واللذيذة",
+        heroText:
+          "مجموعة متنوعة من المشروبات الباردة والساخنة والحلويات المحضّرة بعناية.",
+        heroImage: IMG.hero,
+      },
+    });
+  }
 
-  const classic = await prisma.category.create({
+  const pancakes = await prisma.category.create({
     data: {
-      name: "النكهات الكلاسيكية",
-      slug: "classic-gelato",
+      name: "بان كيك",
+      slug: "pancakes",
       icon: "cone",
       page: PageType.GELATO,
       sortOrder: 1,
     },
   });
 
-  const signature = await prisma.category.create({
+  const crepes = await prisma.category.create({
     data: {
-      name: "نكهات مميزة",
-      slug: "signature-gelato",
+      name: "كلاسيك كريب",
+      slug: "classic-crepes",
       icon: "cone",
       page: PageType.GELATO,
       sortOrder: 2,
     },
   });
 
+  const boxes = await prisma.category.create({
+    data: {
+      name: "بوكس السعادة",
+      slug: "happiness-box",
+      icon: "offer",
+      page: PageType.GELATO,
+      sortOrder: 3,
+    },
+  });
+
   const cold = await prisma.category.create({
     data: {
-      name: "مشروبات باردة",
+      name: "المشروبات الباردة",
       slug: "cold-drinks",
       icon: "snowflake",
       page: PageType.BEVERAGES,
@@ -96,7 +102,7 @@ async function main() {
 
   const hot = await prisma.category.create({
     data: {
-      name: "مشروبات ساخنة",
+      name: "المشروبات الساخنة",
       slug: "hot-drinks",
       icon: "cup",
       page: PageType.BEVERAGES,
@@ -107,145 +113,267 @@ async function main() {
   await prisma.product.createMany({
     data: [
       {
-        name: "جيلاتو فراولة",
-        description: "فراولة طازجة مهروسة مع كريمة إيطالية ناعمة.",
-        price: 18,
-        imageUrl: IMG.strawberryGelato,
-        categoryId: classic.id,
+        name: "بان كيك كيندر",
+        description: "بان كيك مع كيندر وشوكولاتة غنية.",
+        price: 350,
+        imageUrl: IMG.pancakeKinder,
+        categoryId: pancakes.id,
+        sortOrder: 1,
+      },
+      {
+        name: "بان كيك شوكولا",
+        description: "بان كيك كلاسيك بصوص الشوكولا.",
+        price: 350,
+        imageUrl: IMG.pancakeChocolate,
+        categoryId: pancakes.id,
+        sortOrder: 2,
+      },
+      {
+        name: "بان كيك لوتس",
+        description: "بان كيك مع صوص اللوتس وبسكويت لوتس.",
+        price: 350,
+        imageUrl: IMG.pancakeLotus,
+        categoryId: pancakes.id,
+        sortOrder: 3,
+      },
+      {
+        name: "بان كيك بستاشيو",
+        description: "بان كيك مع كريمة البستاشيو.",
+        price: 350,
+        imageUrl: IMG.pancakePistachio,
+        categoryId: pancakes.id,
+        sortOrder: 4,
+      },
+      {
+        name: "كريب شوكولا",
+        description: "كريب كلاسيك بصوص الشوكولا.",
+        price: 350,
+        imageUrl: IMG.crepeChocolate,
+        categoryId: crepes.id,
+        sortOrder: 1,
+      },
+      {
+        name: "كريب كيندر",
+        description: "كريب محشي كيندر مع صوص شوكولا.",
+        price: 350,
+        imageUrl: IMG.crepeKinder,
+        categoryId: crepes.id,
+        sortOrder: 2,
+      },
+      {
+        name: "كريب لوتس",
+        description: "كريب مع صوص اللوتس وبسكويت لوتس.",
+        price: 350,
+        imageUrl: IMG.crepeLotus,
+        categoryId: crepes.id,
+        sortOrder: 3,
+      },
+      {
+        name: "كريب بستاشيو",
+        description: "كريب مع كريمة البستاشيو.",
+        price: 350,
+        imageUrl: IMG.crepePistachio,
+        categoryId: crepes.id,
+        sortOrder: 4,
+      },
+      {
+        name: "كريب دبي",
+        description: "كريب دبي بالكنافة والبستاشيو.",
+        price: 450,
+        imageUrl: IMG.crepeDubai,
+        categoryId: crepes.id,
+        isSpecial: true,
+        sortOrder: 5,
+      },
+      {
+        name: "كريب كيت كات",
+        description: "كريب مع قطع كيت كات وصوص شوكولا.",
+        price: 450,
+        imageUrl: IMG.crepeKitkat,
+        categoryId: crepes.id,
+        isSpecial: true,
+        sortOrder: 6,
+      },
+      {
+        name: "سوشي كريب",
+        description: "كريب ملفوف على شكل سوشي مع صوصات متنوعة.",
+        price: 450,
+        imageUrl: IMG.crepeSushi,
+        categoryId: crepes.id,
+        isSpecial: true,
+        sortOrder: 7,
+      },
+      {
+        name: "فوتوتشيني كريب",
+        description: "كريب مقطّع شرائح رفيعة مع صوص الشوكولا.",
+        price: 350,
+        imageUrl: IMG.crepeFettuccine,
+        categoryId: crepes.id,
+        sortOrder: 8,
+      },
+      {
+        name: "بوكس السعادة",
+        description: "بوكس مشكل من كريب ووافل وصلصات متنوعة للمشاركة.",
+        price: 1000,
+        imageUrl: IMG.happinessBox,
+        categoryId: boxes.id,
         isSpecial: true,
         sortOrder: 1,
       },
       {
-        name: "جيلاتو فانيليا",
-        description: "فانيليا مدغشقر الكلاسيكية بقوام حريري.",
-        price: 16,
-        imageUrl: IMG.vanilla,
-        categoryId: classic.id,
-        sortOrder: 2,
-      },
-      {
-        name: "جيلاتو شوكولاتة",
-        description: "شوكولاتة بلجيكية غنية لعشاق الكاكاو.",
-        price: 18,
-        imageUrl: IMG.chocolate,
-        categoryId: classic.id,
-        sortOrder: 3,
-      },
-      {
-        name: "جيلاتو فستق",
-        description: "فستق حلبي محمص بنكهة أصيلة وقوام كريمي.",
-        price: 22,
-        imageUrl: IMG.pistachio,
-        categoryId: signature.id,
-        isSpecial: true,
+        name: "فراببه",
+        description:
+          "نكهات: فريز، باونتي، كيندر، كراميل، فانيل، بابل غام، براونيز، تشيز كيك، شوكولا.",
+        price: 400,
+        imageUrl: IMG.frappe,
+        categoryId: cold.id,
         sortOrder: 1,
-      },
-      {
-        name: "جيلاتو مانجو",
-        description: "مانجو استوائي ناضج بطعم صيفي منعش.",
-        price: 20,
-        imageUrl: IMG.mango,
-        categoryId: signature.id,
-        sortOrder: 2,
-      },
-      {
-        name: "جيلاتو كوكيز",
-        description: "قطع كوكيز مقرمشة داخل جيلاتو فانيليا.",
-        price: 20,
-        imageUrl: IMG.cookies,
-        categoryId: signature.id,
-        sortOrder: 3,
-      },
-      {
-        name: "موهيتو فراولة",
-        description: "مزيج منعش من النعناع والفراولة الطازجة مع لمسة ليمون.",
-        price: 22,
-        imageUrl: IMG.strawberryMojito,
-        categoryId: cold.id,
-        isSpecial: true,
-        sortOrder: 1,
-      },
-      {
-        name: "موهيتو توت",
-        description: "توت مشكل مع نعناع وثلج ليوم حار.",
-        price: 22,
-        imageUrl: IMG.berryMojito,
-        categoryId: cold.id,
-        sortOrder: 2,
-      },
-      {
-        name: "ليموناضة فراجولا",
-        description: "ليمون طبيعي مع نعناع وسكر خفيف.",
-        price: 16,
-        imageUrl: IMG.lemonade,
-        categoryId: cold.id,
-        sortOrder: 3,
       },
       {
         name: "آيس لاتيه",
-        description: "إسبريسو مثلّج مع حليب بارد وكريمة خفيفة.",
-        price: 18,
+        description:
+          "نكهات: كراميل، فراولة، فانيلا، موكا، بابل غم، بلو كاساو، بندق، زيبرا، هازلنت.",
+        price: 250,
         imageUrl: IMG.icedLatte,
+        categoryId: cold.id,
+        sortOrder: 2,
+      },
+      {
+        name: "آيسد أمريكانو",
+        description: "نكهات: برتقال، ليمون، مانجو، بلاك لونغ.",
+        price: 250,
+        imageUrl: IMG.icedAmericano,
+        categoryId: cold.id,
+        sortOrder: 3,
+      },
+      {
+        name: "سوفت درينك",
+        description:
+          "نكهات: دراغون فروت، باشن فروت، ستروبري بلو، رازبيري، بلو كاساو، بلوبيري، ستروبري، مكس بيري، غراندين، دراق، مانجو.",
+        price: 250,
+        imageUrl: IMG.softDrink,
         categoryId: cold.id,
         sortOrder: 4,
       },
       {
-        name: "إسبريسو",
-        description: "جرعة إيطالية مركّزة من البن المحمّص طازجاً.",
-        price: 12,
-        imageUrl: IMG.espresso,
+        name: "آيس تي",
+        description: "نكهات: دراق، ليمون.",
+        price: 250,
+        imageUrl: IMG.icedTea,
+        categoryId: cold.id,
+        sortOrder: 5,
+      },
+      {
+        name: "سوفت لامين",
+        description:
+          "نكهات: مينت فروشينلا، سن شاين، بلو لاجون، سي ماستر، سوفت جم، سوفت لاند جوس، بوب مارلي، بينك مون، بينا كولادا، آيس كركديه، هاواي انتنت.",
+        price: 350,
+        imageUrl: IMG.softLamin,
+        categoryId: cold.id,
+        isSpecial: true,
+        sortOrder: 6,
+      },
+      {
+        name: "ميلك شيك",
+        description:
+          "نكهات: فريز، باونتي، كيندر، كراميل، فانيل، بابل غام، براونيز، تشيز كيك، شوكولا.",
+        price: 350,
+        imageUrl: IMG.milkshake,
+        categoryId: cold.id,
+        sortOrder: 7,
+      },
+      {
+        name: "اسبريسو كومبانا",
+        description: "إسبريسو مع كريمة مخفوقة.",
+        price: 250,
+        imageUrl: IMG.espressoConPanna,
         categoryId: hot.id,
         sortOrder: 1,
       },
       {
-        name: "كابتشينو",
-        description: "إسبريسو مع حليب مبخّر ورغوة ناعمة.",
-        price: 16,
-        imageUrl: IMG.cappuccino,
+        name: "اسبريسو كورتادو",
+        description: "إسبريسو مع كمية متساوية من الحليب المبخّر.",
+        price: 200,
+        imageUrl: IMG.cortado,
         categoryId: hot.id,
         sortOrder: 2,
       },
       {
-        name: "هوت شوكليت",
-        description: "شوكولاتة ساخنة غنية مع كريمة مخفوقة.",
-        price: 18,
-        imageUrl: IMG.hotChocolate,
+        name: "اسبريسو أفوكادو",
+        description: "إسبريسو يُسكب فوق الجيلاتو.",
+        price: 200,
+        imageUrl: IMG.affogato,
         categoryId: hot.id,
         sortOrder: 3,
       },
       {
-        name: "شاي كرك",
-        description: "شاي كرك بالحليب والهيل على الطريقة التقليدية.",
-        price: 14,
-        imageUrl: IMG.karak,
+        name: "فلات وايت",
+        description: "إسبريسو مع حليب مبخّر ناعم.",
+        price: 200,
+        imageUrl: IMG.flatWhite,
         categoryId: hot.id,
         sortOrder: 4,
       },
+      {
+        name: "كابوتشينو",
+        description: "إسبريسو مع حليب مبخّر ورغوة.",
+        price: 200,
+        imageUrl: IMG.cappuccino,
+        categoryId: hot.id,
+        sortOrder: 5,
+      },
+      {
+        name: "لاتيه",
+        description: "إسبريسو مع حليب مبخّر كريمي.",
+        price: 200,
+        imageUrl: IMG.latte,
+        categoryId: hot.id,
+        sortOrder: 6,
+      },
+      {
+        name: "اسبريسو ميكاتو",
+        description: "إسبريسو مع لمسة رغوة حليب.",
+        price: 200,
+        imageUrl: IMG.macchiato,
+        categoryId: hot.id,
+        sortOrder: 7,
+      },
+      {
+        name: "اسبريسو",
+        description: "جرعة إسبريسو مركّزة.",
+        price: 60,
+        imageUrl: IMG.espresso,
+        categoryId: hot.id,
+        sortOrder: 8,
+      },
+      {
+        name: "اسبريسو اسباني",
+        description: "إسبريسو مع حليب مكثف محلّى.",
+        price: 80,
+        imageUrl: IMG.spanishEspresso,
+        categoryId: hot.id,
+        sortOrder: 9,
+      },
+      {
+        name: "اسبريسو لونغو",
+        description: "إسبريسو مستخرج بكمية ماء أكبر.",
+        price: 60,
+        imageUrl: IMG.lungo,
+        categoryId: hot.id,
+        sortOrder: 10,
+      },
+      {
+        name: "اسبريسو ستاليتو",
+        description: "إسبريسو ريستريتو قصير ومركّز.",
+        price: 60,
+        imageUrl: IMG.ristretto,
+        categoryId: hot.id,
+        sortOrder: 11,
+      },
     ],
   });
 
-  await prisma.location.createMany({
-    data: [
-      {
-        name: "فراجولا — الفرع الرئيسي",
-        address: "الرياض، حي العليا، طريق الملك فهد",
-        phone: "+966 50 000 0000",
-        mapUrl: "https://maps.google.com/?q=Riyadh+Olaya",
-        isOpen: true,
-        sortOrder: 1,
-      },
-      {
-        name: "فراجولا — جدة",
-        address: "جدة، الكورنيش",
-        phone: "+966 50 000 0001",
-        mapUrl: "https://maps.google.com/?q=Jeddah+Corniche",
-        isOpen: true,
-        sortOrder: 2,
-      },
-    ],
-  });
-
-  console.log("Seeded Fragola Gelato menu data.");
+  console.log("Seeded Fragola Gelato menu from the printed menu.");
 }
 
 main()
