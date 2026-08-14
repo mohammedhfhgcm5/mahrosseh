@@ -37,19 +37,13 @@ export function resolveOrderPhone(
 
 export function buildOrderMessage(opts: {
   customerName: string;
-  branchName?: string;
   items: CartItem[];
   currency: string;
 }) {
-  const lines = [
-    "*اوردرو*",
+  return [
+    "*اوردر*",
     "",
     `الاسم: ${opts.customerName}`,
-  ];
-  if (opts.branchName) {
-    lines.push(`الفرع: ${opts.branchName}`);
-  }
-  lines.push(
     "",
     "الطلب:",
     ...opts.items.map((item) => {
@@ -58,8 +52,7 @@ export function buildOrderMessage(opts: {
     }),
     "",
     `المجموع: ${cartTotal(opts.items)} ${opts.currency}`,
-  );
-  return lines.join("\n");
+  ].join("\n");
 }
 
 export function orderoPath(locationId: string) {

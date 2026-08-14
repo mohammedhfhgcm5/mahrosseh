@@ -68,7 +68,7 @@ export function LocationsManager({
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="utf-8" />
-    <title>اوردرو — ${location.name}</title>
+    <title>اوردر — ${location.name}</title>
     <style>
       body { font-family: Cairo, Tahoma, sans-serif; text-align: center; padding: 32px; }
       img { width: 320px; height: 320px; }
@@ -77,7 +77,7 @@ export function LocationsManager({
     </style>
   </head>
   <body>
-    <h1>اوردرو</h1>
+    <h1>اوردر</h1>
     <p>${location.name}</p>
     <img src="${qr}" alt="QR" />
     <p>${url}</p>
@@ -91,7 +91,7 @@ export function LocationsManager({
     <section className="mt-6 rounded-3xl bg-white p-6 shadow-sm">
       <h2 className="text-lg font-extrabold">الفروع</h2>
       <p className="mt-1 text-sm text-zinc-500">
-        رقم الهاتف يظهر للزبائن. طلبات اوردرو تنرسل من واتساب الزبون إلى رقم استلام الطلبات في الإعدادات.
+        رقم الهاتف يظهر للزبائن. طلبات اوردر تنرسل من واتساب الزبون إلى رقم استلام الطلبات في الإعدادات.
       </p>
       <form onSubmit={save} className="mt-4 grid gap-3 md:grid-cols-2">
         <input
@@ -104,7 +104,7 @@ export function LocationsManager({
         <input
           value={form.phone}
           onChange={(event) => setForm({ ...form, phone: event.target.value })}
-          placeholder="رقم واتساب اوردرو — 9639xxxxxxxx"
+          placeholder="رقم واتساب اوردر — 9639xxxxxxxx"
           dir="ltr"
           className="rounded-xl border border-pink-100 px-3 py-2 text-sm"
         />
@@ -154,7 +154,7 @@ export function LocationsManager({
             </div>
             <div className="flex flex-wrap gap-3 text-sm">
               <button type="button" className="font-bold text-brand" onClick={() => setQrLocation(location)}>
-                QR اوردرو
+                QR اوردر
               </button>
               <button
                 type="button"
@@ -189,7 +189,7 @@ export function LocationsManager({
             className="w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-xl"
             onClick={(event) => event.stopPropagation()}
           >
-            <h3 className="text-lg font-extrabold text-brand">اوردرو</h3>
+            <h3 className="text-lg font-extrabold text-brand">اوردر</h3>
             <p className="mt-1 text-sm text-zinc-500">{qrLocation.name}</p>
             <img
               src={qrImageUrl(orderUrl(qrLocation.id))}
@@ -213,7 +213,7 @@ export function LocationsManager({
                 rel="noopener noreferrer"
                 className="rounded-full border-2 border-pink-100 px-4 py-2 text-sm font-bold text-zinc-700"
               >
-                فتح صفحة اوردرو
+                فتح صفحة اوردر
               </a>
               <button
                 type="button"

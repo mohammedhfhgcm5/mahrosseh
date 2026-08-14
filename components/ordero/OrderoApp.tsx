@@ -65,7 +65,7 @@ function OrderoQrMenu({
               priority
             />
             <div className="min-w-0">
-              <p className="text-sm font-extrabold text-brand sm:text-base">اوردرو</p>
+              <p className="text-sm font-extrabold text-brand sm:text-base">اوردر</p>
               <p className="truncate text-xs text-zinc-500 sm:text-sm">{location.name}</p>
             </div>
           </div>

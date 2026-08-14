@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locationId } = await params;
   const location = await getLocationById(locationId);
   return {
-    title: location ? `اوردرو — ${location.name}` : "اوردرو",
+    title: location ? `اوردر — ${location.name}` : "اوردر",
     robots: { index: false, follow: false },
   };
 }

@@ -14,25 +14,17 @@ export function OrderoCheckout() {
   const { settings, locations, presetLocation, cart, askName, setAskName, confirmSelection } =
     useOrdero();
   const [customerName, setCustomerName] = useState("");
-  const [branchId, setBranchId] = useState(presetLocation?.id ?? locations[0]?.id ?? "");
   const [error, setError] = useState("");
 
   const count = cartCount(cart);
   const total = cartTotal(cart);
-  const selectedBranch =
-    presetLocation ?? locations.find((location) => location.id === branchId) ?? null;
-  const orderPhone = resolveOrderPhone(settings, selectedBranch);
-  const showBranchPicker = !presetLocation && locations.length > 1;
+  const orderPhone = resolveOrderPhone(settings, presetLocation ?? locations[0] ?? null);
 
   function sendOrder(event: React.FormEvent) {
     event.preventDefault();
     const name = customerName.trim();
     if (!name) {
       setError("اكتب اسمك حتى نعرف الطلب");
-      return;
-    }
-    if (showBranchPicker && !selectedBranch) {
-      setError("اختر الفرع");
       return;
     }
     if (!orderPhone) {
@@ -42,7 +34,6 @@ export function OrderoCheckout() {
 
     const message = buildOrderMessage({
       customerName: name,
-      branchName: selectedBranch?.name,
       items: cart,
       currency: settings.currency,
     });
@@ -80,7 +71,7 @@ export function OrderoCheckout() {
             onSubmit={sendOrder}
             className="w-full max-w-md rounded-3xl bg-white p-5 shadow-xl sm:p-6"
           >
-            <h2 className="text-xl font-extrabold text-brand">اوردرو</h2>
+            <h2 className="text-xl font-extrabold text-brand">اوردر</h2>
             <p className="mt-1 text-sm text-zinc-500">
               اكتب اسمك، وبعدين رح ينفتح واتساب من رقمك لإرسال الطلب للمحل.
             </p>
@@ -100,25 +91,6 @@ export function OrderoCheckout() {
             <p className="mt-2 text-sm font-extrabold text-zinc-900">
               المجموع: {total} {settings.currency}
             </p>
-
-            {showBranchPicker ? (
-              <label className="mt-4 block text-sm font-bold">
-                الفرع
-                <select
-                  value={branchId}
-                  onChange={(event) => setBranchId(event.target.value)}
-                  className="mt-2 w-full rounded-xl border border-pink-100 px-3 py-3 text-base outline-none focus:border-brand"
-                >
-                  {locations.map((location) => (
-                    <option key={location.id} value={location.id}>
-                      {location.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            ) : selectedBranch ? (
-              <p className="mt-3 text-sm text-zinc-500">الفرع: {selectedBranch.name}</p>
-            ) : null}
 
             <label className="mt-4 block text-sm font-bold">
               اسمك
