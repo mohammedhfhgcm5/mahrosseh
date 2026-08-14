@@ -1,6 +1,10 @@
+"use client";
+
 import { Hero } from "@/components/site/Hero";
 import { CategorySection } from "@/components/site/CategorySection";
+import { useOrdero } from "@/components/ordero/OrderoProvider";
 import { DEFAULT_SETTINGS } from "@/lib/constants";
+import { cartCount } from "@/lib/ordero";
 import type { CategoryWithProducts, SerializedSettings } from "@/lib/types";
 
 type MenuViewProps = {
@@ -20,7 +24,9 @@ export function MenuView({
   settings,
   emptyMessage,
 }: MenuViewProps) {
+  const { cart, getQuantity, increment, decrement } = useOrdero();
   const hasItems = categories.some((category) => category.products.length > 0);
+  const hasCart = cartCount(cart) > 0;
 
   return (
     <>
@@ -29,13 +35,19 @@ export function MenuView({
         description={description}
         imageUrl={heroImage || DEFAULT_SETTINGS.heroImage}
       />
-      <div id="menu" className="mx-auto w-full max-w-7xl px-3 pb-16 sm:px-4">
+      <div
+        id="menu"
+        className={`mx-auto w-full max-w-7xl px-3 sm:px-4 ${hasCart ? "pb-28" : "pb-16"}`}
+      >
         {hasItems ? (
           categories.map((category) => (
             <CategorySection
               key={category.id}
               category={category}
               currency={settings.currency}
+              getQuantity={getQuantity}
+              onIncrement={increment}
+              onDecrement={decrement}
             />
           ))
         ) : (

@@ -91,7 +91,7 @@ export function LocationsManager({
     <section className="mt-6 rounded-3xl bg-white p-6 shadow-sm">
       <h2 className="text-lg font-extrabold">الفروع</h2>
       <p className="mt-1 text-sm text-zinc-500">
-        رقم الهاتف هو واتساب اوردرو لهذا الفرع. اطبع QR وضعه عند الكاشير أو الطاولات.
+        رقم الهاتف يظهر للزبائن. طلبات اوردرو تنرسل من واتساب الزبون إلى رقم استلام الطلبات في الإعدادات.
       </p>
       <form onSubmit={save} className="mt-4 grid gap-3 md:grid-cols-2">
         <input

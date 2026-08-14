@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ShoppingBag, User } from "lucide-react";
 import { MobileNav } from "@/components/site/MobileNav";
+import { useOptionalOrdero } from "@/components/ordero/OrderoProvider";
+import { cartCount } from "@/lib/ordero";
 
 const links = [
   { href: "/", label: "جيلاتو" },
@@ -15,6 +17,8 @@ const links = [
 
 export function Navbar({ isOpen }: { isOpen: boolean }) {
   const pathname = usePathname();
+  const ordero = useOptionalOrdero();
+  const count = ordero ? cartCount(ordero.cart) : 0;
 
   return (
     <header className="sticky top-0 z-50 border-b border-pink-100 bg-white/95 backdrop-blur">
@@ -59,9 +63,21 @@ export function Navbar({ isOpen }: { isOpen: boolean }) {
           <span className="hidden h-10 w-10 items-center justify-center rounded-full text-zinc-600 sm:flex">
             <User className="h-5 w-5" />
           </span>
-          <span className="hidden h-10 w-10 items-center justify-center rounded-full text-zinc-600 sm:flex">
+          <button
+            type="button"
+            onClick={() => {
+              if (count > 0) ordero?.confirmSelection();
+            }}
+            className="relative hidden h-10 w-10 items-center justify-center rounded-full text-zinc-600 sm:flex"
+            aria-label="الطلب"
+          >
             <ShoppingBag className="h-5 w-5" />
-          </span>
+            {count > 0 ? (
+              <span className="absolute top-0.5 right-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-brand px-1 text-[10px] font-extrabold text-white">
+                {count}
+              </span>
+            ) : null}
+          </button>
           <MobileNav links={links} activePath={pathname} />
         </div>
       </div>
